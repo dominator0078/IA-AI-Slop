@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Patient Monitoring System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1>🏥 Smart Patient Monitoring System</h1>
+            <p>Real-time patient management • Live vital monitoring • Intelligent alerts</p>
+        </div>
+        <div class="status" id="systemStatus">● SYSTEM ONLINE</div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <!-- Left Sidebar -->
+            <section class="card sidebar">
+                <div class="form-section">
+                    <h2>📋 Register Patient</h2>
+                    <label>Patient ID</label>
+                    <input id="pid" type="text" placeholder="e.g. P101">
+                    
+                    <label>Patient Name</label>
+                    <input id="pname" type="text" placeholder="e.g. John Doe">
+                    
+                    <label>Age</label>
+                    <input id="age" type="number" placeholder="e.g. 35" min="1" max="120">
+                    
+                    <label>Contact</label>
+                    <input id="contact" type="tel" placeholder="e.g. +1-555-0123">
+                    
+                    <button class="primary" onclick="registerPatient()">Register Patient</button>
+                </div>
+
+                <div class="form-section">
+                    <h2>🔄 Monitoring Controls</h2>
+                    <label>Patient ID</label>
+                    <input id="controlId" type="text" placeholder="e.g. P101">
+                    
+                    <button class="primary" onclick="startMonitoring()">▶ Start Monitoring</button>
+                    <button class="secondary" onclick="stopMonitoring()">⏹ Stop Monitoring</button>
+                </div>
+
+                <div class="form-section">
+                    <h2>📊 Update Vital Signs</h2>
+                    <label>Patient ID</label>
+                    <input id="vpid" type="text" placeholder="e.g. P101">
+                    
+                    <label>Temperature (°C)</label>
+                    <input id="temp" type="number" step="0.1" placeholder="36.8" min="30" max="45">
+                    
+                    <label>Heart Rate (bpm)</label>
+                    <input id="heart" type="number" placeholder="75" min="30" max="220">
+                    
+                    <label>SpO₂ (%)</label>
+                    <input id="spo2" type="number" placeholder="98" min="50" max="100">
+                    
+                    <button class="primary" onclick="updateVitals()">Update Vitals</button>
+                </div>
+
+                <div class="form-section">
+                    <h2>🗑️ Patient Management</h2>
+                    <label>Patient ID</label>
+                    <input id="deleteId" type="text" placeholder="e.g. P101">
+                    <button class="danger" onclick="deletePatient()">Delete Patient</button>
+                </div>
+            </section>
+
+            <!-- Main Content -->
+            <section>
+                <div class="card">
+                    <h2>👥 Patient Dashboard</h2>
+                    <div class="dashboard-controls">
+                        <button class="secondary" onclick="exportData()">📥 Export Data</button>
+                        <button class="secondary" onclick="clearAllPatients()">🔄 Clear All</button>
+                    </div>
+                    <div id="patients" class="patient-list"></div>
+                </div>
+
+                <div class="log" id="log">
+                    <div class="info">[System] ✓ Smart Patient Monitoring System initialized...</div>
+                    <div class="info">[System] Ready for patient registration and monitoring.</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal for patient details -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Patient Details</h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
